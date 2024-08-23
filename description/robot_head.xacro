@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <joint name="head_joint" type="revolute">
+        <parent link="chassis"/>
+        <child link="head"/>
+        <origin xyz=".089 0 0.246"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="30" velocity="1.0" lower="-2.36" upper="2.36"/>
+        <dynamics damping="10.0" friction="30.0"/>
+    </joint>
+
+    <link name="head">
+        <visual>
+            <geometry>
+                <box size="0.178 0.178 0.076"/>
+            </geometry>
+            <material name="yellow"/>
+        </visual>
+        <collision>
+            <origin xyz="0.089 0 0.311"/>
+            <geometry>
+                <box size="0.178 0.178 0.076"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.3" x="0.178" y="0.178" z="0.076">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="head">
+        <material>Gazebo/Yellow</material>
+        <mu1 value="30"/>
+        <mu2 value="30"/>
+    </gazebo>
+
+
+
+</robot>
